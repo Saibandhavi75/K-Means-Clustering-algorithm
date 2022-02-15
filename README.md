@@ -8,34 +8,56 @@ To write a python program to implement K-Means Clustering Algorithm.
 ## Algorithm:
 
 ### Step1
-<br>
+
+Load the CSV into a DataFrame
 
 ### Step2
-<br>
+
+Print the number of contents to be displayed using df.head()
 
 ### Step3
-<br>
+
+The number of rows returned is defined in pandas option setting
 
 ### Step4
-<br>
+
+Check your system's maximum column with the pd.options.display.max.max_column statement
 
 ### Step5
-<br>
+
+Increase the maximum numer of rows to diaplay the entire DataFrame
 
 ## Program:
 ```
-
-
-
-
-
+##Developed by: Aruru Sai Bandhavi
+##Reference number:21005573
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+import seaborn as sns
+import warnings
+warnings.filterwarnings('ignore')
+X1 = pd.read_csv('clustering.csv')
+print(X1.head(2))
+X2 = X1.loc[:, ['ApplicantIncome', 'LoanAmount']]
+print(X2.head(2))
+X = X2.values
+sns.scatterplot(X[:,0], X[:, 1])
+plt.xlabel('Income')
+plt.ylabel('Loan')
+plt.show()
+kmean=KMeans(n_clusters=4)
+kmean.fit(X)
+print('Cluster Centers:', kmean.cluster_centers_)
+print('Labels:', kmean.labels_)
+predicted_class = kmean.predict([[9000,120]])
+print('The cluster group 1for Applicant Income 9000 and Loanamount 120')
 
 ```
 ## Output:
 
-### Insert your output
+![Output](https://github.com/Saibandhavi75/K-Means-Clustering-algorithm/blob/master/k1.PNG?raw=true)
 
-<br>
-
+![Output](https://github.com/Saibandhavi75/K-Means-Clustering-algorithm/blob/master/k2.PNG?raw=true)
 ## Result
 Thus the K-means clustering algorithm is implemented and predicted the cluster class using python program.
